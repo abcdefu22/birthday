@@ -1,0 +1,533 @@
+:root {
+    /* Soft pastel colors as requested */
+    --bg-gradient: linear-gradient(135deg, #fffcfc 0%, #f6f0f5 100%);
+    --pastel-pink: #ffd1dc;
+    --pastel-lavender: #e6e6fa;
+    --pastel-peach: #ffebd2;
+    --pastel-blue: #d4f0f0;
+    --primary-accent: #ff7b93;
+    --text-primary: #5c4d5c;
+    --text-secondary: #8c7e8f;
+
+    /* Elegant Font Pairing: Script for heading and clean sans-serif for body */
+    --font-heading: 'Great Vibes', cursive;
+    --font-body: 'Outfit', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg-gradient);
+    font-family: var(--font-body);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* -----------------------------
+   Background Animated Blobs 
+------------------------------ */
+.background-elements {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.blob {
+    position: absolute;
+    filter: blur(90px);
+    opacity: 0.5;
+    animation: breathing 12s infinite alternate ease-in-out;
+    border-radius: 50%;
+}
+
+.blob-1 {
+    top: -10%;
+    left: -10%;
+    width: 40vw;
+    height: 40vw;
+    background: var(--pastel-pink);
+    animation-delay: 0s;
+}
+
+.blob-2 {
+    bottom: -10%;
+    right: -10%;
+    width: 50vw;
+    height: 50vw;
+    background: var(--pastel-blue);
+    animation-delay: -4s;
+}
+
+.blob-3 {
+    top: 30%;
+    left: 40%;
+    width: 45vw;
+    height: 45vw;
+    background: var(--pastel-lavender);
+    animation-delay: -8s;
+}
+
+/* -----------------------------
+   Soft Floral Background Pattern
+------------------------------ */
+.floral-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.flower {
+    position: absolute;
+    font-size: clamp(4rem, 12vw, 10rem);
+    opacity: 0.15;
+    /* Keeps them subtly blended as background details */
+    filter: blur(2px);
+    /* Dreamy softness to match blobs */
+    animation: petal-sway 20s infinite alternate ease-in-out;
+}
+
+.f-1 {
+    top: 5%;
+    left: 5%;
+    animation-delay: 0s;
+    transform: rotate(15deg);
+}
+
+.f-2 {
+    top: 60%;
+    left: 10%;
+    animation-delay: -5s;
+    font-size: clamp(5rem, 14vw, 12rem);
+}
+
+.f-3 {
+    top: 15%;
+    right: 8%;
+    animation-delay: -10s;
+}
+
+.f-4 {
+    bottom: 5%;
+    right: 5%;
+    animation-delay: -15s;
+    transform: rotate(-20deg);
+    font-size: clamp(6rem, 16vw, 14rem);
+}
+
+.f-5 {
+    top: 35%;
+    left: 45%;
+    opacity: 0.08;
+    filter: blur(4px);
+    font-size: clamp(10rem, 25vw, 20rem);
+    animation-delay: -7s;
+}
+
+.f-6 {
+    bottom: 20%;
+    left: 35%;
+    animation-delay: -12s;
+}
+
+@keyframes petal-sway {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+
+    100% {
+        transform: translate(40px, -40px) rotate(20deg) scale(1.1);
+    }
+}
+
+/* -----------------------------
+   Main Content Structure
+------------------------------ */
+.content {
+    width: 100%;
+    max-width: 1400px;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    z-index: 1;
+}
+
+/* -----------------------------
+   Typography & Headers
+------------------------------ */
+.header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    color: var(--primary-accent);
+    text-shadow: 2px 4px 10px rgba(255, 123, 147, 0.15);
+    margin-bottom: 0.8rem;
+    line-height: 1.1;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    color: var(--text-secondary);
+    font-weight: 300;
+    max-width: 900px;
+    /* <--- Increased max-width here */
+    margin: 0 auto 1.5rem;
+    line-height: 1.6;
+}
+
+/* Age Counter Styles */
+.age-counter {
+    margin: 0 auto;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.age-stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 1.5rem;
+    font-weight: 400;
+    color: var(--text-primary);
+}
+
+.stat-item {
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    display: flex;
+    align-items: baseline;
+    gap: 0.3rem;
+}
+
+.stat-item span {
+    font-weight: 600;
+    font-size: 1.2em;
+    color: var(--primary-accent);
+}
+
+/* -----------------------------
+   Dynamic Orbit Gallery
+------------------------------ */
+.gallery-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.gallery {
+    position: relative;
+    width: clamp(320px, 85vw, 750px);
+    /* Enlarged gallery container */
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: clamp(4rem, 12vh, 8rem) auto 0;
+}
+
+/* Base Gallery Items (Main and Orbiting) */
+.gallery-item {
+    border-radius: 50%;
+    /* Orbit images remain circular by default */
+    /* Making all images circular */
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    border: 4px solid rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+    /* inherit from gallery-item so main image gets square */
+    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Center Dominant Image */
+.main-item {
+    width: clamp(180px, 50vw, 320px);
+    /* Enlarged center image width */
+    height: auto;
+    max-height: 50vh;
+    /* Prevent the image from getting too tall */
+    /* Let the height wrap the image naturally */
+    aspect-ratio: auto;
+    /* Remove the 1/1 square aspect ratio */
+    border-radius: 24px;
+    /* Smooth corners */
+    z-index: 10;
+    border: 6px solid rgba(255, 255, 255, 0.95);
+    box-shadow: 0 15px 35px rgba(255, 123, 147, 0.2);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent;
+}
+
+.main-item img {
+    display: block;
+    /* Remove baseline empty space */
+    width: 100%;
+    height: auto;
+    /* Scale appropriately without white space */
+    object-fit: cover;
+    background: transparent;
+}
+
+.main-item::before {
+    font-size: 4rem;
+    /* Adjusted placeholder size */
+    position: absolute;
+    content: "📷";
+    color: rgba(92, 77, 92, 0.2);
+    z-index: -1;
+}
+
+/* Orbit Track Structure */
+.orbit-track {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    animation: spin 45s linear infinite;
+    /* Slightly slower orbit for larger radius */
+    z-index: 5;
+}
+
+/* Static position wrappers */
+.orbit-pos {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* Push outward by a tighter radius so they are closer to the main image */
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(calc(clamp(140px, 40vw, 380px) * -1));
+    width: clamp(120px, 30vw, 220px);
+    /* Much larger orbiting images requested */
+    height: clamp(120px, 30vw, 220px);
+    /* Much larger orbiting images requested */
+}
+
+/* Container to keep image upright from the initial positioning rotate */
+.counter-angle {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* This negated rotation keeps the element upright statically */
+    transform: rotate(calc(-1 * var(--angle)));
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* The item negates the dynamic track spinning to stay perfectly upright */
+.orbit-pos .gallery-item {
+    animation: counter-spin 45s linear infinite;
+}
+
+/* Keyframes for orbit */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes counter-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+/* Hover Interaction Styles */
+.orbit-track:hover {
+    animation-play-state: paused;
+}
+
+.orbit-track:hover .gallery-item {
+    animation-play-state: paused;
+}
+
+.orbit-pos:hover .counter-angle {
+    /* Add a scale to the static rotation! */
+    transform: rotate(calc(-1 * var(--angle))) scale(1.15) !important;
+}
+
+.orbit-pos:hover .gallery-item {
+    box-shadow: 0 20px 40px rgba(255, 123, 147, 0.25), 0 0 20px rgba(255, 255, 255, 0.5);
+    border-color: #fff;
+    z-index: 20;
+}
+
+.orbit-pos:hover .gallery-item img {
+    transform: scale(1.1);
+}
+
+.main-item:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+    /* preserve center pos */
+    box-shadow: 0 30px 60px rgba(255, 123, 147, 0.3), 0 0 30px rgba(255, 255, 255, 0.8);
+    z-index: 25;
+}
+
+/* Highlight main image when ANY supporting image is hovered */
+.gallery:has(.orbit-pos:hover) .main-item {
+    box-shadow: 0 0 45px rgba(255, 123, 147, 0.4), 0 0 80px rgba(255, 255, 255, 0.8);
+    border-color: #fff;
+    filter: saturate(1.2);
+}
+
+/* -----------------------------
+   Footer Signature Styles
+------------------------------ */
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 3rem 1rem 1.5rem;
+    margin-top: auto;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+    z-index: 10;
+}
+
+.footer .heart {
+    display: inline-block;
+    color: #ff4b68;
+    animation: heartbeat 1.5s infinite;
+    margin: 0 4px;
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.25);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.25);
+    }
+}
+
+/* Rest of the original animations */
+@keyframes breathing {
+    0% {
+        transform: scale(1) translate(0, 0);
+    }
+
+    100% {
+        transform: scale(1.2) translate(30px, -20px);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.delay-1 {
+    animation-delay: 0.4s;
+}
+
+.delay-2 {
+    animation-delay: 0.8s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 100;
+    overflow: hidden;
+}
+
+.confetti {
+    position: absolute;
+    opacity: 0;
+}
+
+/* Responsive Mobile Layout */
+@media (max-width: 768px) {
+    .content {
+        padding: 2rem 1rem;
+        justify-content: flex-start;
+        min-height: auto;
+    }
+
+    .header {
+        margin-bottom: 2rem;
+    }
+
+    .gallery {
+        margin-top: 2rem;
+    }
+}
